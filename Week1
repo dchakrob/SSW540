@@ -1,0 +1,9 @@
+'''
+Name: Danika Chakroborty
+Date: 01/15/2024
+Assignment: Week 1
+'''
+
+first = "Danika"
+last = "Chakroborty"
+print("Hello " + first + " " + last + "!")
