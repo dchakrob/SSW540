@@ -1,0 +1,53 @@
+'''
+Name: Danica Chakroborty
+Assignment: Week 2, Random Grouping
+Github Link: 
+I pledge my honor that I have abided by the Stevens Honor System - Danica Chakroborty
+
+'''
+
+
+import random
+
+def groupNames(names):
+    try:
+        if len(names) != 9:
+            raise ValueError("No more and no less than 9 students can be in the list")
+        else:
+            for name in names:
+                if len(name.split()) < 2:
+                    raise ValueError("Please enter both the first and the last name of every student")
+                else:
+                    continue
+        alpha = names.copy()
+        alpha.sort(key=lambda name: name.split()[-1])
+        valid = False
+        while valid == False:
+            rando = names.copy()
+            random.shuffle(rando)
+            group1 = rando[0:3]
+            group2 = rando[3:6]
+            group3 = rando[6:9]
+            valid = True
+            for group in (group1, group2, group3):
+                for i in range(len(group)):
+                    for j in range(i + 1, len(group)):
+                        if abs(alpha.index(group[i]) - alpha.index(group[j])) == 1:
+                            valid = False
+                            break
+                        else:
+                            continue
+                    if valid == False:
+                        break
+                    else:
+                        continue
+                if valid == False:
+                    break
+                else:
+                    continue
+        return "Group 1: " + str(group1) + "\nGroup 2: " + str(group2) + "\nGroup 3: " + str(group3)
+    except ValueError as error:
+        return "Error: " + str(error)
+
+test = ["Danika Chakroborty", "Lena Poshni", "Anika Patel", "David Muresan", "Beyonce Knowles", "David Bowie", "Elton John", "Shrijani Chakroborty", "Sami Mueler"]
+print(groupNames(test))
