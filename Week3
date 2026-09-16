@@ -1,0 +1,40 @@
+'''
+Name: Danica Chakroborty
+I pledge my honor that I have abided by the Stevens Honor System - Danica Chakroborty
+Assignment: Week 3
+Github Link: https://github.com/dchakrob/SSW540/blob/main/Week3
+'''
+class Student:
+    def __init__(self, first, last, courses):
+        self.first = first
+        self.last = last
+        self.courses = courses
+
+    def full_name(self):
+        return self.first + " " + self.last
+
+def fullTime(student):
+    if student.courses >= 3:
+        return True
+    else:
+        return False
+
+students = []
+
+for i in range(9):
+    print("Student", i + 1)
+
+    first = input("Enter first name: ")
+    last = input("Enter last name: ")
+    courses = int(input("Enter number of courses: "))
+
+    student = Student(first, last, courses)
+    students.append(student)
+
+print("\nStudent Status\n")
+
+for student in students:
+    if fullTime(student):
+        print(student.full_name(), "is Full-time\n")
+    else:
+        print(student.full_name(), "is Part-time\n")
