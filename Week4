@@ -1,0 +1,38 @@
+'''
+Name: Danica Chakroborty
+Assignment: Week 4
+Github Link: 
+I pledge my Honor that I have abided by the Stevens Honor System. - Danica Chakroborty
+
+'''
+
+def guessNumber():
+    low = 0
+    high = 50
+    guessed = False
+
+    print("Think of a secret number between 0 and 50!! I will try to guess it :)")
+
+    while guessed == False:
+        guess = (low + high) // 2
+
+        print("Is your number", guess, "?")
+        answer = input("Enter yes, higher, or lower: ")
+
+        if answer == "yes":
+            print("I guessed your number!!")
+            guessed = True
+
+        elif answer == "higher":
+            low = guess + 1
+
+        elif answer == "lower":
+            high = guess - 1
+
+        else:
+            print("Enter yes, higher, or lower please!!")
+        if low > high:
+            print("Something went wrong, please try again!!")
+            break
+
+guessNumber()
