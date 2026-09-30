@@ -1,0 +1,53 @@
+'''
+Name: Danica Chakroborty
+Assignment: Week 5
+Github Link: https://github.com/dchakrob/SSW540/blob/main/Week5 
+I pledge my Honor that I have abided by the Stevens Honor System. - Danica Chakroborty
+
+'''
+
+def cypher(message):
+    cyphered = ""
+    spaces = []
+
+    for letter in message:
+        if letter == " ":
+            spaces.append(len(cyphered))
+        else:
+            cyphered += letter.upper()
+
+    return cyphered, spaces
+
+
+def decipher(cyphered, spaces):
+    message = cyphered.lower()
+
+    for position in reversed(spaces):
+        message = message[:position] + " " + message[position:]
+
+    message = message.capitalize()
+
+    return message
+
+
+message = input("Enter a message please: ")
+
+if len(message.replace(" ", "")) > 140:
+    print("Message cannot contain more than 140 letters!! Please make it shorter. Thank you!!")
+
+else:
+    cyphered, spaces = cypher(message)
+
+    print("\nYour Original Message:")
+    print(message)
+
+    print("\nThe Cyphered Message:")
+    print(cyphered)
+
+    print("\nThe Positions of the Spaces:")
+    print(spaces)
+
+    deciphered_text = decipher(cyphered, spaces)
+
+    print("\nYour Deciphered Message:")
+    print(deciphered_text)
