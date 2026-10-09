@@ -1,0 +1,16 @@
+'''
+Name: Danica Chakroborty
+Assignment: Week 5
+Github Link: https://github.com/dchakrob/SSW540/blob/main/Week6 
+I pledge my Honor that I have abided by the Stevens Honor System. - Danica Chakroborty
+
+'''
+
+objects = ["strawberry", "apple", "apple", "mango", "grape", "banana"]
+
+print("Objects:", objects)
+print("Unique objects:")
+
+for item in objects:
+    if objects.count(item) == 1:
+        print(item)
