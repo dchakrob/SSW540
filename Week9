@@ -1,0 +1,60 @@
+'''
+Name: Danica Chakroborty
+Assignment: Week 9
+Github Link: https://github.com/dchakrob/SSW540/blob/main/Week9
+I pledge my Honor that I have abided by the Stevens Honor System. - Danica Chakroborty
+
+'''
+
+from html.parser import HTMLParser
+from urllib.parse import urlparse
+
+
+class LinkParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() == "a":
+            for attribute, value in attrs:
+                if attribute.lower() == "href" and value:
+                    self.links.append(value)
+
+
+def get_domain(link):
+    parsed_link = urlparse(link)
+
+    if parsed_link.netloc:
+        return parsed_link.netloc.lower()
+
+    return ""
+
+
+def extract_links(filename):
+    parser = LinkParser()
+
+    with open(filename, "r", encoding="utf-8") as html_file:
+        parser.feed(html_file.read())
+
+    return parser.links
+
+
+def main():
+    filename = input("Enter the HTML file name: ")
+
+    try:
+        links = extract_links(filename)
+        links.sort(key=lambda link: (get_domain(link), link.lower()))
+
+        print("\nLinks sorted by domain:\n")
+
+        for link in links:
+            print(link)
+
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' was not found.")
+
+
+if __name__ == "__main__":
+    main()
