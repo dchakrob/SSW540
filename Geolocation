@@ -1,0 +1,28 @@
+''' 
+Name: Danica Chakroborty
+Assignment: Geolocation
+Github Link: https://github.com/dchakrob/SSW567-Github-API-HW3/blob/main/Geolocation
+I pledge my honor that I have abided by the Stevens Honor System - Danica Chakroborty
+'''
+
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderServiceError, GeocoderTimedOut
+
+def main():
+    address = input("Enter a USA address: ")
+    geolocator = Nominatim(user_agent="usa_address_geocoder_student_app")
+
+    try:
+        location = geolocator.geocode(address, country_codes="us", timeout=10)
+
+        if location is not None:
+            print(f"Latitude: {location.latitude}")
+            print(f"Longitude: {location.longitude}")
+        else:
+            print("Coordinates could not be found for that address.")
+
+    except (GeocoderTimedOut, GeocoderServiceError) as error:
+        print(f"Geocoding service error: {error}")
+
+if __name__ == "__main__":
+    main()
